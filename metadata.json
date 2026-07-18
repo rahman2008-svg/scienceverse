@@ -1,0 +1,6 @@
+{
+  "name": "ScienceVerse",
+  "description": "ScienceVerse is the ultimate offline-capable scientist encyclopedia, featuring over a hundred detailed scientist biographies, interactive timelines, laboratory stories, Nobel galleries, discovery trees, quizzes, and a virtual Science World Hub and Time Machine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
