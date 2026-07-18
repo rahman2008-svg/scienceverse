@@ -1,0 +1,38 @@
+workflows:
+  scienceverse-debug:
+    name: ScienceVerse Debug APK
+
+    max_build_duration: 60
+
+    environment:
+      java: 17
+
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+
+    scripts:
+      - name: Accept Android SDK licenses
+        script: |
+          yes | sdkmanager --licenses || true
+
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+
+      - name: Make Gradle executable
+        script: |
+          chmod +x gradlew
+
+      - name: Clean project
+        script: |
+          ./gradlew clean --stacktrace
+
+      - name: Build Debug APK
+        script: |
+          ./gradlew assembleDebug --stacktrace
+
+    artifacts:
+      - app/build/outputs/**/*.apk
+      - app/build/reports/**
